@@ -1,0 +1,26 @@
+{
+  "generator-m-ionic": {
+    "answers": {
+      "appName": "EduAim",
+      "appId": "org.aimtu.app",
+      "ionicCss": true,
+      "bowerPackages": [
+        "localforage#~1.3.1"
+      ],
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "plugins": [
+        "cordova-plugin-device",
+        "cordova-plugin-dialogs",
+        "cordova-plugin-inappbrowser",
+        "com.ionic.keyboard",
+        "cordova-plugin-network-information",
+        "cordova-plugin-splashscreen",
+        "cordova-plugin-statusbar"
+      ],
+      "appModule": "EduAim"
+    }
+  }
+}
