@@ -1,0 +1,87 @@
+<ion-view view-title="Plan Your Day">
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <!-- content goes here -->
+    <ion-list>
+
+      <!-- start point -->
+      <div class="item item-divider item-icon-right">
+        Start Point
+        <i class="icon ion-ios-location"></i>
+      </div>
+
+      <!-- start date and time picker -->
+      <ion-item class="item-icon-left">
+        <i class="icon ion-calendar"></i>
+        <label class="item item-input">
+          <input type="datetime">
+        </label>
+      </ion-item>
+
+      <!-- start location picker -->
+      <ion-item class="item item-icon-left">
+        <i class="icon ion-map"></i>
+        <label class="item item-input">
+          <input type="text" placeholder="Location" ng-model="ctrl.location">
+        </label>
+      </ion-item>
+
+
+
+      <!-- activities -->
+      <div class="item item-divider item-icon-right">
+        Activities
+        <i class="icon ion-ios-color-wand"></i>
+      </div>
+
+      <ion-item>
+        <!-- list of activities -->
+        <ion-list ng-repeat="activity in ctrl.activities" show-delete ="ctrl.shouldShowDelete">
+          <ion-item class="item-icon-right">
+            <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removeActivity(activity)" ></ion-delete-button>
+            {{ activity.name }}
+            <i class="icon ion-chevron-right"></i>
+          </ion-item>
+        </ion-list>
+
+        <!-- add activities button -->
+        <button class="button button-block button-positive" ng-click="ctrl.addActivity()">
+          Add Activity
+        </button>
+
+        <!-- delete activities button -->
+        <button class="button button-block button-assertive" ng-click="ctrl.changeDeleteVisible()"
+                ng-show="ctrl.activities.length !== 0">
+          Delete Activities
+        </button>
+      </ion-item>
+
+
+
+      <!-- end point -->
+      <div class="item item-divider item-icon-right">
+        End Point
+        <i class="icon ion-ios-location"></i>
+      </div>
+
+      <!-- end date and time picker -->
+      <ion-item class="item-icon-left">
+        <i class="icon ion-calendar"></i>
+        <label class="item item-input">
+          <input type="datetime">
+        </label>
+      </ion-item>
+
+      <!-- end location picker -->
+      <ion-item class="item item-icon-left">
+        <i class="icon ion-map"></i>
+        <label class="item item-input">
+          <input type="text" placeholder="Location" ng-model="ctrl.location">
+        </label>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
