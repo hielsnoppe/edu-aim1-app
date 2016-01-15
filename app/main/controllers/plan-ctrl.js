@@ -2,13 +2,12 @@
 angular.module('main')
 .controller('PlanCtrl', function ($log) {
 
-  $log.log('Hello from your Controller: PlanCtrl in module main:. This is your controller:', this);
-
   this.startTime = new Date();
   this.endTime = new Date();
   this.startDate = new Date();
   this.endDate = new Date();
-  this.location = '';
+  this.startLocation = '';
+  this.endLocation = '';
   this.activities = [];
   var activityNum = 0;
   this.shouldShowDelete = false;
