@@ -4,6 +4,10 @@ angular.module('main')
 
   $log.log('Hello from your Controller: PlanCtrl in module main:. This is your controller:', this);
 
+  this.startTime = new Date();
+  this.endTime = new Date();
+  this.startDate = new Date();
+  this.endDate = new Date();
   this.location = '';
   this.activities = [];
   var activityNum = 0;

@@ -15,7 +15,14 @@
       <ion-item class="item-icon-left">
         <i class="icon ion-calendar"></i>
         <label class="item item-input">
-          <input type="datetime">
+          <input type="date" placeholder="Start Date" ng-model="ctrl.startDate">
+        </label>
+      </ion-item>
+
+      <ion-item class="item-icon-left">
+        <i class="icon ion-clock"></i>
+        <label class="item item-input">
+          <input type="time" placeholder="Start Time" ng-model="ctrl.startTime">
         </label>
       </ion-item>
 
@@ -69,7 +76,14 @@
       <ion-item class="item-icon-left">
         <i class="icon ion-calendar"></i>
         <label class="item item-input">
-          <input type="datetime">
+          <input type="date" placeholder="End Date" ng-model="ctrl.endDate">
+        </label>
+      </ion-item>
+
+      <ion-item class="item-icon-left">
+        <i class="icon ion-clock"></i>
+        <label class="item item-input">
+          <input type="time" placeholder="End Time" ng-model="ctrl.endTime">
         </label>
       </ion-item>
 
