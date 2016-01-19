@@ -1,16 +1,28 @@
-<ion-view view-title="main module">
-  <!-- do you want padding? -->
-  <ion-content class="padding">
-
-    <!-- content goes here -->
-    <ion-list>
-      <ion-item class="item item-divider">
-        This is your activity template!
-      </ion-item>
-      <ion-item class="item item-icon">
-        Yeiiii!
-      </ion-item>
-    </ion-list>
-
-  </ion-content>
+<ion-view view-title="{{ ctrl.name }}">
+    <div class="item item-divider">
+        Filters
+    </div>
+    <!-- do you want padding? -->
+    <ion-content class="padding">
+        <!-- content goes here -->
+        <ion-list>
+            <ion-item class="item item-divider">
+                Filters
+            </ion-item>
+            <!-- list of filters -->
+            <ion-list ng-repeat="filter in ctrl.filters" show-delete="ctrl.shouldShowDelete">
+                <!-- route to filter page -->
+                <ion-item class="item-icon-right" ui-sref="filter({ name: filter.name })">
+                    <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removefilter(filter)"></ion-delete-button>
+                    {{ filter.name }}
+                    <i class="icon ion-chevron-down"></i>
+                </ion-item>
+            </ion-list>
+            <ion-item>
+                <button class="button button-block button-positive" ng-click="ctrl.openFilterModal()">
+                    Add Filter
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
