@@ -26,13 +26,18 @@ angular.module('main', [
       })
       .state('property', {
         url: '/property',
-        templateUrl: 'main/templates/property.html',
-        controller: 'PropertyCtrl as ctrl'
+        templateUrl: 'main/templates/component.html',
+        controller: 'ComponentCtrl as ctrl'
       })
       .state('preferences', {
         url: '/preferences',
-        templateUrl: 'main/templates/preferences.html',
-        controller: 'PreferencesCtrl as ctrl'
-      });
+        templateUrl: 'main/templates/filter.html',
+        controller: 'FilterCtrl as ctrl'
+      })
+      .state('result', {
+        url: '/result',
+        templateUrl: 'main/templates/result.html',
+        controller: 'ResultCtrl as ctrl'
+      })
 
   });
