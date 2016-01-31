@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-  .controller('ActivityCtrl', function($ionicModal, $scope, $ionicPopup, $log, $stateParams) {
+  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams) {
     this.name = $stateParams.name;
 
     this.filters = [];
@@ -14,11 +14,11 @@ angular.module('main')
     $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
       scope: $scope,
       animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
       $scope.filterModal = modal;
     });
 
-    this.openFilterModal = function() {
+    this.openFilterModal = function () {
       if (this.availableFilters.length === 0) {
         $ionicPopup.alert({
           title: 'No more filters to add',
@@ -29,15 +29,15 @@ angular.module('main')
       }
     };
 
-    this.createFilter = function(filter, index) {
+    this.createFilter = function (filter, index) {
       this.filters.push({
         name: filter.name
       });
-      this.availableFilters.splice(index, 1)
+      this.availableFilters.splice(index, 1);
       $scope.filterModal.hide();
     };
 
-    this.closeModal = function() {
+    this.closeModal = function () {
       $scope.filterModal.hide();
     };
   });

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('Activity', function ($log) {
+.service('Activity', function () {
 
 
 });
