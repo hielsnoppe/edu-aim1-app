@@ -16,7 +16,6 @@ angular.module('main')
     };
 
     this.addActivity = function (activity) {
-        $log.log('On ajoute ' + activity);
         switch (activity) {
             case 'Cinema':
                 this.activities['Cinema'] = {

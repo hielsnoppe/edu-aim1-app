@@ -9,7 +9,7 @@
             <!-- list of filters -->
             <ion-list ng-repeat="filter in ctrl.activity.filtersSelected" show-delete="ctrl.shouldShowDelete">
                 <!-- route to filter page -->
-                <ion-item class="item-icon-right" ui-sref="filter({ name: filter.name })">
+                <ion-item class="item-icon-right" ui-sref="filter({ name: filter.name, activity: ctrl.name })">
                     <ion-delete-button class="ion-minus-circled" ng-click="ctrl.deleteFilter(filter.name)"></ion-delete-button>
 
                     <div ng-if="filter.class == '1For1'">

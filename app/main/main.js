@@ -29,10 +29,14 @@ angular.module('main', [
         templateUrl: 'main/templates/component.html',
         controller: 'ComponentCtrl as ctrl'
     })
-    .state('preferences', {
-        url: '/preferences',
+    .state('filter', {
+        url: '/filter',
         templateUrl: 'main/templates/filter.html',
-        controller: 'FilterCtrl as ctrl'
+        controller: 'FilterCtrl as ctrl',
+        params: {
+            name: null,
+            activity: null
+        }
     })
     .state('result', {
         url: '/result',
