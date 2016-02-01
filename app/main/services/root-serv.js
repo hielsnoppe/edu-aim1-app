@@ -11,10 +11,6 @@ angular.module('main')
         this.activities[activity] = data;
     };
 
-    this.setCurrentActivity = function (activity) {
-        this.currentActivity = activity;
-    };
-
     this.addActivity = function (activity) {
         switch (activity) {
             case 'Cinema':

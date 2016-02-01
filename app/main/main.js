@@ -17,6 +17,7 @@ angular.module('main', [
         controller: 'PlanCtrl as ctrl'
     })
     .state('activity', {
+        cache: false,
         url: '/activity',
         templateUrl: 'main/templates/activity.html',
         controller: 'ActivityCtrl as ctrl',

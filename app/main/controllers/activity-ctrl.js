@@ -14,18 +14,20 @@ angular.module('main')
             }
         }
         $scope.filterModal.hide();
+        Root.updateActivity(this.name, this.activity);
     };
 
     this.deleteFilter = function (filter) {
         for (var i = 0; i < this.activity.filtersSelected.length; i++) {
             if (this.activity.filtersSelected[i].name === filter) {
-             this.activity.filtersAvailable.push(this.activity.filtersSelected[i]);
+                this.activity.filtersAvailable.push(this.activity.filtersSelected[i]);
                 this.activity.filtersSelected.splice(i, 1);
             }
         }
         if (this.activity.filtersSelected.length === 0) {
             this.shouldShowDelete = false;
         }
+        Root.updateActivity(this.name, this.activity);
     };
 
     $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
@@ -53,8 +55,4 @@ angular.module('main')
     this.changeDeleteVisible = function () {
         this.shouldShowDelete = !this.shouldShowDelete;
     };
-
-    $scope.$on('$destroy', function () {
-        $log.log('fze');
-    });
   });
