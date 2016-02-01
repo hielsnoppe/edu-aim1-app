@@ -1,7 +1,7 @@
 'use strict';
 angular.module('main')
   .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Root) {
-
+    this.shouldShowDelete = false;
     this.name = $stateParams.name;
     this.activity = Root.getActivity(this.name);
 
@@ -48,6 +48,10 @@ angular.module('main')
 
     this.closeModal = function () {
       $scope.filterModal.hide();
+    };
+
+    this.changeDeleteVisible = function () {
+        this.shouldShowDelete = !this.shouldShowDelete;
     };
 
     $scope.$on('$destroy', function () {
