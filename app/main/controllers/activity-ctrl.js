@@ -6,7 +6,6 @@ angular.module('main')
     this.activity = Root.getActivity(this.name);
 
     this.addFilter = function (filter) {
-        console.log('On ajoute ' + filter);
         for (var i = 0; i < this.activity.filtersAvailable.length; i++) {
             if (this.activity.filtersAvailable[i].name === filter) {
                 this.activity.filtersSelected.push(this.activity.filtersAvailable[i]);

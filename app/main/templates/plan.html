@@ -1,103 +1,101 @@
 <ion-view view-title="Plan Your Day">
-  <!-- do you want padding? -->
-  <ion-content class="padding">
+    <!-- do you want padding? -->
+    <ion-content class="padding">
 
-    <!-- content goes here -->
-    <ion-list>
+        <!-- content goes here -->
+        <ion-list>
 
-      <!-- start point -->
-      <div class="item item-divider item-icon-right">
-        Start Point
-        <i class="icon ion-ios-location"></i>
-      </div>
+            <!-- start point -->
+            <div class="item item-divider item-icon-right">
+                Start Point
+                <i class="icon ion-ios-location"></i>
+            </div>
 
-      <!-- start date and time picker -->
-      <ion-item class="item-icon-left">
-        <i class="icon ion-calendar"></i>
-        <label class="item item-input">
-          <input type="date" placeholder="Start Date" ng-model="ctrl.startDate">
-        </label>
-      </ion-item>
+            <!-- start date and time picker -->
+            <ion-item class="item-icon-left">
+                <i class="icon ion-calendar"></i>
+                <label class="item item-input">
+                    <input type="date" placeholder="Start Date" ng-model="ctrl.startDate">
+                </label>
+            </ion-item>
 
-      <ion-item class="item-icon-left">
-        <i class="icon ion-clock"></i>
-        <label class="item item-input">
-          <input type="time" placeholder="Start Time" ng-model="ctrl.startTime">
-        </label>
-      </ion-item>
+            <ion-item class="item-icon-left">
+                <i class="icon ion-clock"></i>
+                <label class="item item-input">
+                    <input type="time" placeholder="Start Time" ng-model="ctrl.startTime">
+                </label>
+            </ion-item>
 
-      <!-- start location picker -->
-      <ion-item class="item item-icon-left">
-        <i class="icon ion-map"></i>
-        <label class="item item-input">
-          <input type="text" placeholder="Location" ng-model="ctrl.startLocation">
-        </label>
-      </ion-item>
+            <!-- start location picker -->
+            <ion-item class="item item-icon-left">
+                <i class="icon ion-map"></i>
+                <label class="item item-input">
+                    <input type="text" placeholder="Location" ng-model="ctrl.startLocation">
+                </label>
+            </ion-item>
 
 
 
-      <!-- activities -->
-      <div class="item item-divider item-icon-right">
-        Activities
-        <i class="icon ion-ios-color-wand"></i>
-      </div>
+            <!-- activities -->
+            <div class="item item-divider item-icon-right">
+                Activities
+                <i class="icon ion-ios-color-wand"></i>
+            </div>
 
-      <ion-item>
-        <!-- list of activities -->
-        <ion-list ng-repeat="activity in ctrl.activities" show-delete ="ctrl.shouldShowDelete">
-          <!-- route to activity page -->
-          <ion-item class="item-icon-right" ui-sref="activity({ name: activity.name })">
-            <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removeActivity(activity)" ></ion-delete-button>
-            {{ activity.name }}
-            <i class="icon ion-chevron-right"></i>
-          </ion-item>
-        </ion-list>
+            <ion-item>
+                <!-- list of activities -->
+                <ion-list ng-repeat="activity in ctrl.activities" show-delete ="ctrl.shouldShowDelete">
+                    <!-- route to activity page -->
+                    <ion-item class="item-icon-right" ui-sref="activity({ name: activity.name })">
+                        <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removeActivity(activity)" ></ion-delete-button>
+                        {{ activity.name }}
+                        <i class="icon ion-chevron-right"></i>
+                    </ion-item>
+                </ion-list>
 
-        <!-- add activities button -->
-        <button class="button button-block button-positive" ng-click="ctrl.openModal()">
-          Add Activity
-        </button>
+                <!-- add activities button -->
+                <button class="button button-block button-positive" ng-click="ctrl.openModal()">
+                    Add Activity
+                </button>
 
-        <!-- delete activities button -->
-        <button class="button button-block button-assertive" ng-click="ctrl.changeDeleteVisible()"
+                <!-- delete activities button -->
+                <button class="button button-block button-assertive" ng-click="ctrl.changeDeleteVisible()"
                 ng-show="ctrl.activities.length !== 0">
-          Delete Activities
-        </button>
-      </ion-item>
+                Delete Activities
+            </button>
+        </ion-item>
 
+        <!-- end point -->
+        <div class="item item-divider item-icon-right">
+            End Point
+            <i class="icon ion-ios-location"></i>
+        </div>
 
+        <!-- end date and time picker -->
+        <ion-item class="item-icon-left">
+            <i class="icon ion-calendar"></i>
+            <label class="item item-input">
+                <input type="date" placeholder="End Date" ng-model="ctrl.endDate">
+            </label>
+        </ion-item>
 
-      <!-- end point -->
-      <div class="item item-divider item-icon-right">
-        End Point
-        <i class="icon ion-ios-location"></i>
-      </div>
+        <ion-item class="item-icon-left">
+            <i class="icon ion-clock"></i>
+            <label class="item item-input">
+                <input type="time" placeholder="End Time" ng-model="ctrl.endTime">
+            </label>
+        </ion-item>
 
-      <!-- end date and time picker -->
-      <ion-item class="item-icon-left">
-        <i class="icon ion-calendar"></i>
-        <label class="item item-input">
-          <input type="date" placeholder="End Date" ng-model="ctrl.endDate">
-        </label>
-      </ion-item>
-
-      <ion-item class="item-icon-left">
-        <i class="icon ion-clock"></i>
-        <label class="item item-input">
-          <input type="time" placeholder="End Time" ng-model="ctrl.endTime">
-        </label>
-      </ion-item>
-
-      <!-- end location picker -->
-      <ion-item class="item item-icon-left">
-        <i class="icon ion-map"></i>
-        <label class="item item-input">
-          <input type="text" placeholder="Location" ng-model="ctrl.endLocation">
-        </label>
-      </ion-item>
+        <!-- end location picker -->
+        <ion-item class="item item-icon-left">
+            <i class="icon ion-map"></i>
+            <label class="item item-input">
+                <input type="text" placeholder="Location" ng-model="ctrl.endLocation">
+            </label>
+        </ion-item>
 
     </ion-list>
 
-  </ion-content>
+</ion-content>
 
 </ion-view>

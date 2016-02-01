@@ -20,7 +20,12 @@
                         <i class="icon ion-chevron-right"></i>
                     </div>
                     <div ng-if="filter.class == 'AllForAll'">
-                        {{ filter.name }}: {{filter.values.join(", ")}}
+                        {{ filter.name }}:
+                        <div ng-repeat="choice in filter.choices">
+                            <div ng-if="choice.value == true">
+                                {{choice.text}}
+                            </div>
+                        </div>
                         <i class="icon ion-chevron-right"></i>
                     </div>
                 </ion-item>

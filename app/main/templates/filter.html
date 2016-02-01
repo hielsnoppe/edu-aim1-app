@@ -1,16 +1,20 @@
 <ion-view view-title="{{ ctrl.name }}">
-  <!-- do you want padding? -->
-  <ion-content class="padding">
-
-    <!-- content goes here -->
-    <ion-list>
-      <ion-item class="item item-divider">
-        This is your preferences template!
-      </ion-item>
-      <ion-item class="item item-icon">
-        Yeiiii!
-      </ion-item>
-    </ion-list>
-
-  </ion-content>
+    <!-- do you want padding? -->
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item class="item item-divider">
+                Preferences
+            </ion-item>
+            <div ng-if="ctrl.filter.class == '1ForAll'">
+                <ion-list ng-repeat="choice in ctrl.filter.choices">
+                    <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+                </ion-list>
+            </div>
+            <div ng-if="ctrl.filter.class == 'AllForAll'">
+                <ion-list ng-repeat="choice in ctrl.filter.choices">
+                    <ion-checkbox ng-model="choice.value">{{choice.text}}</ion-checkbox>
+                </ion-list>
+            </div>
+        </ion-item>
+    </ion-content>
 </ion-view>
