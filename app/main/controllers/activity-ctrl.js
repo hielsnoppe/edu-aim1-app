@@ -1,15 +1,32 @@
 'use strict';
 angular.module('main')
-  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams) {
-    this.name = $stateParams.name;
+  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Root) {
 
-    this.filters = [];
-    this.availableFilters = [];
-    if (this.name === 'Cinema') {
-      this.availableFilters = [{
-        name: 'Movie'
-      }];
-    }
+    this.name = $stateParams.name;
+    this.activity = Root.getActivity(this.name);
+
+    this.addFilter = function (filter) {
+        console.log('On ajoute ' + filter);
+        for (var i = 0; i < this.activity.filtersAvailable.length; i++) {
+            if (this.activity.filtersAvailable[i].name === filter) {
+                this.activity.filtersSelected.push(this.activity.filtersAvailable[i]);
+             this.activity.filtersAvailable.splice(i, 1);
+            }
+        }
+        $scope.filterModal.hide();
+    };
+
+    this.deleteFilter = function (filter) {
+        for (var i = 0; i < this.activity.filtersSelected.length; i++) {
+            if (this.activity.filtersSelected[i].name === filter) {
+             this.activity.filtersAvailable.push(this.activity.filtersSelected[i]);
+                this.activity.filtersSelected.splice(i, 1);
+            }
+        }
+        if (this.activity.filtersSelected.length === 0) {
+            this.shouldShowDelete = false;
+        }
+    };
 
     $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
       scope: $scope,
@@ -19,7 +36,7 @@ angular.module('main')
     });
 
     this.openFilterModal = function () {
-      if (this.availableFilters.length === 0) {
+      if (this.activity.filtersAvailable.length === 0) {
         $ionicPopup.alert({
           title: 'No more filters to add',
           content: 'You already used all the filters.'
@@ -29,15 +46,11 @@ angular.module('main')
       }
     };
 
-    this.createFilter = function (filter, index) {
-      this.filters.push({
-        name: filter.name
-      });
-      this.availableFilters.splice(index, 1);
-      $scope.filterModal.hide();
-    };
-
     this.closeModal = function () {
       $scope.filterModal.hide();
     };
+
+    $scope.$on('$destroy', function () {
+        $log.log('fze');
+    });
   });
