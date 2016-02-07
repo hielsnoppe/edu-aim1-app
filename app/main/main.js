@@ -3,6 +3,7 @@ angular.module('main', [
     'ionic',
     'ngCordova',
     'ui.router',
+    'ngLodash'
     // TODO: load other modules selected during generation
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -22,7 +23,7 @@ angular.module('main', [
         templateUrl: 'main/templates/activity.html',
         controller: 'ActivityCtrl as ctrl',
         params: {
-            name: null
+            activity: null
         }
     })
     .state('property', {
@@ -35,7 +36,7 @@ angular.module('main', [
         templateUrl: 'main/templates/filter.html',
         controller: 'FilterCtrl as ctrl',
         params: {
-            name: null,
+            filter: null,
             activity: null
         }
     })
@@ -45,4 +46,7 @@ angular.module('main', [
         controller: 'ResultCtrl as ctrl'
     });
 
-});
+})
+  .run(function (Root) {
+    Root.fetchDataSource();
+  });

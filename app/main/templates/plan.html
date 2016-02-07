@@ -46,7 +46,7 @@
                 <!-- list of activities -->
                 <ion-list ng-repeat="activity in ctrl.activities" show-delete ="ctrl.shouldShowDelete">
                     <!-- route to activity page -->
-                    <ion-item class="item-icon-right" ui-sref="activity({ name: activity.name })">
+                    <ion-item class="item-icon-right" ui-sref="activity({ activity: activity })">
                         <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removeActivity(activity)" ></ion-delete-button>
                         {{ activity.name }}
                         <i class="icon ion-chevron-right"></i>

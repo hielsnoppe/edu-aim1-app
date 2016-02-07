@@ -1,9 +1,10 @@
 'use strict';
 angular.module('main')
-  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Root) {
+  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Activity) {
     this.shouldShowDelete = false;
-    this.name = $stateParams.name;
-    this.activity = Root.getActivity(this.name);
+    this.activity = $stateParams.activity;
+    this.filters = [];
+    this.availableFilters = [];
 
     this.addFilter = function (filter) {
         for (var i = 0; i < this.activity.filtersAvailable.length; i++) {
@@ -13,7 +14,7 @@ angular.module('main')
             }
         }
         $scope.filterModal.hide();
-        Root.updateActivity(this.name, this.activity);
+        Activity.updateActivity(this.name, this.activity);
     };
 
     this.deleteFilter = function (filter) {
@@ -26,7 +27,7 @@ angular.module('main')
         if (this.activity.filtersSelected.length === 0) {
             this.shouldShowDelete = false;
         }
-        Root.updateActivity(this.name, this.activity);
+        Activity.updateActivity(this.name, this.activity);
     };
 
     $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
