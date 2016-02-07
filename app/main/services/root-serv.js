@@ -4,6 +4,7 @@ angular.module('main')
 
     this.dataSource = [];
     this.filledInfo = {};
+    this.filledInfo.activities = [];
     var dataSourceFetched = false;
 
     /**

@@ -4,22 +4,26 @@ angular.module('main')
     // =======
     // Private
     // =======
-    var selectedActivities = [];
+    function selectedActivities () {
+      return Root.filledInfo.activities;
+    }
 
     function findActivityByName (array, name) {
       return lodash.filter(array, {'name': name})[0];
     }
 
     function removeActivityFromArray (array, activity) {
-      lodash.remove(array, activity);
+      updateRoot(lodash.remove(array, function(test) {
+        return test.name == activity.name;
+      }))
     }
 
     function availableActivities() {
-      return lodash.differenceBy(Root.dataSource, selectedActivities, 'name');
+      return lodash.differenceBy(Root.dataSource, selectedActivities(), 'name');
     }
 
-    function updateRoot() {
-      Root.filledInfo.activities = selectedActivities;
+    function updateRoot(data) {
+      Root.filledInfo.activities = data ;
     }
 
     // ======
@@ -34,29 +38,26 @@ angular.module('main')
     };
 
     this.getSelectedActivities = function () {
-      return selectedActivities;
+      return selectedActivities();
     };
 
     this.getActivity = function (activity) {
-      return findActivityByName(selectedActivities, activity);
+      return findActivityByName(selectedActivities(), activity);
     };
 
     this.updateActivity = function (activity, data) {
-      var index = lodash.findIndex(selectedActivities, ['name', activity]);
+      var index = lodash.findIndex(selectedActivities(), ['name', activity]);
       this.activities[index] = data;
       updateRoot()
     };
 
     this.addActivity = function (activity) {
-      selectedActivities.push(findActivityByName(availableActivities(), activity));
-      removeActivityFromArray(availableActivities, activity);
-      updateRoot()
-      return selectedActivities;
+      selectedActivities().push(findActivityByName(availableActivities(), activity));
+      return selectedActivities();
     };
 
     this.deleteActivity = function (activity) {
-      removeActivityFromArray(selectedActivities, activity);
-      updateRoot()
-      return selectedActivities;
+      removeActivityFromArray(selectedActivities(), activity);
+      return selectedActivities();
     };
   });
