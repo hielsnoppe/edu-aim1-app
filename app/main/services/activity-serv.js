@@ -11,11 +11,15 @@ angular.module('main')
     }
 
     function removeActivityFromArray (array, activity) {
-      lodash.remove(array, activity)
+      lodash.remove(array, activity);
     }
 
     function availableActivities() {
       return lodash.differenceBy(Root.dataSource, selectedActivities, 'name');
+    }
+
+    function updateRoot() {
+      Root.filledInfo.activities = selectedActivities;
     }
 
     // ======
@@ -26,11 +30,11 @@ angular.module('main')
     };
 
     this.getOriginalActivity = function (activity) {
-
+      return findActivityByName(Root.dataSource, activity);
     };
 
     this.getSelectedActivities = function () {
-      return selectedActivities
+      return selectedActivities;
     };
 
     this.getActivity = function (activity) {
@@ -40,16 +44,19 @@ angular.module('main')
     this.updateActivity = function (activity, data) {
       var index = lodash.findIndex(selectedActivities, ['name', activity]);
       this.activities[index] = data;
+      updateRoot()
     };
 
     this.addActivity = function (activity) {
       selectedActivities.push(findActivityByName(availableActivities(), activity));
       removeActivityFromArray(availableActivities, activity);
+      updateRoot()
       return selectedActivities;
     };
 
     this.deleteActivity = function (activity) {
       removeActivityFromArray(selectedActivities, activity);
+      updateRoot()
       return selectedActivities;
     };
   });
