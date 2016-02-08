@@ -10,8 +10,8 @@ angular.module('main')
       {
         'name': 'Restaurant',
         'description': 'Go to a restaurant to eat something',
-        'properties': {
-          'cuisine': {
+        'properties': [
+          {
             'name': 'Restaurant Cusine',
             'type': 'string',
             'enum': [
@@ -21,19 +21,19 @@ angular.module('main')
               'other'
             ]
           },
-          'minimumRating': {
+          {
             'name': 'Restaurant Rating',
             'type': 'integer',
             'minimum': 0,
             'maximum': 5
           },
-          'priceRange': {
+          {
             'name': 'Price Range',
             'type': 'floatRange',
             'minimum': 0,
             'maximum': 100
           },
-          'restaurantType': {
+          {
             'name': 'Restaurant Type',
             'type': 'string',
             'enum': [
@@ -43,21 +43,21 @@ angular.module('main')
               'other'
             ]
           },
-          'wifiAvailable': {
+          {
             'name': 'Wifi Available',
             'type': 'boolean'
           },
-          'telephoneNumber': {
+          {
             'name': 'Phone Number',
             'type': 'interger',
             'minimum': 0,
             'maximum': 9999999999
           },
-          'reservationRequirement': {
+          {
             'name': 'Accepts Reservations',
             'type': 'boolean'
           }
-        }
+        ]
       }
     ]
       /*endinject*/

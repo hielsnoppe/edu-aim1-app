@@ -13,7 +13,7 @@ angular.module('main')
     }
 
     function removeActivityFromArray (array, activity) {
-      updateRoot(lodash.remove(array, function(test) {
+      updateActivity(lodash.remove(array, function(test) {
         return test.name == activity.name;
       }))
     }
@@ -22,7 +22,7 @@ angular.module('main')
       return lodash.differenceBy(Root.dataSource, selectedActivities(), 'name');
     }
 
-    function updateRoot(data) {
+    function updateActivity(data) {
       Root.filledInfo.activities = data ;
     }
 
@@ -47,12 +47,16 @@ angular.module('main')
 
     this.updateActivity = function (activity, data) {
       var index = lodash.findIndex(selectedActivities(), ['name', activity]);
-      this.activities[index] = data;
-      updateRoot()
+      selectedActivities()[index] = data;
+      updateActivity()
     };
 
     this.addActivity = function (activity) {
-      selectedActivities().push(findActivityByName(availableActivities(), activity));
+      var newActivity = {};
+      // Use object assign to avoid editing the reference object!
+      Object.assign(newActivity, findActivityByName(availableActivities(), activity))
+      newActivity.properties = [];
+      selectedActivities().push(newActivity);
       return selectedActivities();
     };
 
