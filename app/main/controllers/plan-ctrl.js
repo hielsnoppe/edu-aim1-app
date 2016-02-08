@@ -1,7 +1,7 @@
 'use strict';
 angular.module('main')
-  .controller('PlanCtrl', function ($ionicViewService, $ionicModal, $scope, $ionicPopup, Root, Activity, $state) {
-    $ionicViewService.clearHistory();
+  .controller('PlanCtrl', function ($ionicHistory, $ionicModal, $scope, $ionicPopup, Root, Activity, $state) {
+    $ionicHistory.clearHistory();
     this.startTime = new Date();
     this.endTime = new Date();
     this.startDate = new Date();
