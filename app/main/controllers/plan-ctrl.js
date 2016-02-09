@@ -5,17 +5,17 @@ angular.module('main')
     // Huge fix for routing problems!!!
     // https://github.com/driftyco/ionic/issues/4124
     $rootScope.$on('$locationChangeSuccess', function () {
-      if (! $ionicHistory.currentView()) { return }
+      if (! $ionicHistory.currentView()) { return; }
 
       //extracted from $ionicHistory
-      function getCurrentStateId() {
+      function getCurrentStateId () {
         var id;
         if ($state && $state.current && $state.current.name) {
           id = $state.current.name;
           if ($state.params) {
             for (var key in $state.params) {
               if ($state.params.hasOwnProperty(key) && $state.params[key]) {
-                id += "_" + key + "=" + $state.params[key];
+                id += '_' + key + '=' + $state.params[key];
               }
             }
           }
@@ -23,7 +23,7 @@ angular.module('main')
         }
         // if something goes wrong make sure its got a unique stateId
         return ionic.Utils.nextUid();
-      };
+      }
 
       var currentView = $ionicHistory.currentView();
       currentView.stateId = getCurrentStateId();
