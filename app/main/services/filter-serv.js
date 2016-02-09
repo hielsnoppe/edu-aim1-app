@@ -14,9 +14,10 @@ angular.module('main')
   }
 
   function removeFilterFromObject (activity, object, filter) {
-    updateActivity(activity, lodash.remove(object, function(test) {
+    lodash.remove(object, function(test) {
       return test.name == filter.name;
-    }))
+    });
+    updateActivity(activity,object);
   }
 
   function availableFilters(activity) {
