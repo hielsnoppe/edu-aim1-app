@@ -29,7 +29,7 @@ angular.module('main')
           },
           {
             'name': 'Price Range',
-            'type': 'floatRange',
+            'type': 'integer',
             'minimum': 0,
             'maximum': 100
           },
@@ -49,7 +49,7 @@ angular.module('main')
           },
           {
             'name': 'Phone Number',
-            'type': 'interger',
+            'type': 'integer',
             'minimum': 0,
             'maximum': 9999999999
           },
@@ -75,13 +75,13 @@ angular.module('main')
           },
           {
             'name': 'Movie Rating',
-            'type': 'integer',
+            'type': 'integerRange',
             'minimum': 0,
             'maximum': 5
           },
           {
             'name': 'Price Range',
-            'type': 'floatRange',
+            'type': 'integer',
             'minimum': 0,
             'maximum': 100
           },
@@ -101,7 +101,7 @@ angular.module('main')
           },
           {
             'name': 'Phone Number',
-            'type': 'interger',
+            'type': 'integer',
             'minimum': 0,
             'maximum': 9999999999
           },

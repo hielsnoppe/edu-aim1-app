@@ -4,12 +4,34 @@
   <ion-content class="padding">
     <ion-list>
       <ion-item class="item item-divider">
-        Preferences
+        {{ filter.name }}
       </ion-item>
       <div ng-switch="filter.type">
+
+        <!-- In case of string list choice -->
         <ion-list ng-switch-when="string" ng-repeat="choice in originalFilter.enum">
           <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
         </ion-list>
+
+        <!-- In case of integer -->
+        <div ng-switch-when="integer" class="item range range-positive">
+          {{ originalFilter.minimum.toString() }}
+          <input ng-model="filter.value" type="range" name="{{ filter.name }}" min="{{ originalFilter.minimum }}"
+                 max="{{ originalFilter.maximum }}" value="{{ (originalFilter.maximum - originalFilter.minimum)/2 }}"
+                 ng-change="ctrl.updateFilter(filter.value)">
+          {{ originalFilter.maximum.toString() }}
+        </div>
+
+        <!-- In case of integer range -->
+        <ion-list ng-switch-when="integerRange" ng-repeat="choice in originalFilter.enum">
+          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+        </ion-list>
+
+        <!-- In case of boolean -->
+        <ion-list ng-switch-when="boolean" ng-repeat="choice in originalFilter.enum">
+          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+        </ion-list>
+
       </div>
     </ion-list>
   </ion-content>

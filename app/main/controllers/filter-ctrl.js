@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('FilterCtrl', function ($stateParams, $scope, $state, Filter) {
+.controller('FilterCtrl', function ($stateParams, $scope, $state, Filter, Root, $log) {
   if (!$stateParams.activity || ! $stateParams.filter) {
     // Return if we arrived here without a given activity
     $state.go('plan', {clearHistory: true});
@@ -12,6 +12,8 @@ angular.module('main')
   }
 
   this.updateFilter = function (filterData) {
-    Filter.updateFilter($scope.activity.name, $scope.filter.name, filterData);
+    $log.log(Root.filledInfo);
+    $scope.filter.value = filterData;
+    Filter.updateFilter($scope.activity.name, $scope.filter.name, $scope.filter);
   }
 });

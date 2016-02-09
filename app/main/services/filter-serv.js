@@ -51,7 +51,7 @@ angular.module('main')
   this.updateFilter = function (activity, filter, data) {
     var index = lodash.findIndex(selectedFilters(activity), ['name', filter]);
     selectedFilters(activity)[index] = data;
-    updateActivity(activity);
+    //updateActivity(activity, selectedFilters(activity));
   };
 
   this.addFilter = function (activity, filter) {
@@ -59,6 +59,11 @@ angular.module('main')
     var newFilter = {};
     newFilter.name = originalFilter.name;
     newFilter.type = originalFilter.type;
+    switch (originalFilter.type) {
+      case "integer":
+            newFilter.value = 0;
+            break;
+    }
     selectedFilters(activity).push(newFilter);
     return selectedFilters(activity);
   };
