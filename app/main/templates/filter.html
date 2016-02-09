@@ -1,21 +1,16 @@
 <ion-view cache-view="false">
-  <ion-nav-title> {{ 'Filter ' + filter }} </ion-nav-title>
-    <!-- do you want padding? -->
-    <ion-content class="padding">
-        <ion-list>
-            <ion-item class="item item-divider">
-                Preferences
-            </ion-item>
-            <div ng-if="ctrl.filter.class == '1ForAll'">
-                <ion-list ng-repeat="choice in ctrl.filter.choices">
-                    <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
-                </ion-list>
-            </div>
-            <div ng-if="ctrl.filter.class == 'AllForAll'">
-                <ion-list ng-repeat="choice in ctrl.filter.choices">
-                    <ion-checkbox ng-model="choice.value">{{choice.text}}</ion-checkbox>
-                </ion-list>
-            </div>
+  <ion-nav-title> {{ 'Filter ' + filter.name }}</ion-nav-title>
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item class="item item-divider">
+        Preferences
+      </ion-item>
+      <div ng-switch="filter.type">
+        <ion-list ng-switch-when="string" ng-repeat="choice in originalFilter.enum">
+          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
         </ion-list>
-    </ion-content>
+      </div>
+    </ion-list>
+  </ion-content>
 </ion-view>

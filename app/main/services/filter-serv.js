@@ -37,7 +37,7 @@ angular.module('main')
   };
 
   this.getOriginalFilter = function (activity, filter) {
-    return findFilterByName(Activity.getOriginalActivity(activity), filter);
+    return findFilterByName(Activity.getOriginalActivity(activity).properties, filter);
   };
 
   this.getSelectedFilters = function (activity) {
@@ -55,7 +55,11 @@ angular.module('main')
   };
 
   this.addFilter = function (activity, filter) {
-    selectedFilters(activity).push(findFilterByName(availableFilters(activity), filter));
+    var originalFilter = findFilterByName(availableFilters(activity), filter);
+    var newFilter = {};
+    newFilter.name = originalFilter.name;
+    newFilter.type = originalFilter.type;
+    selectedFilters(activity).push(newFilter);
     return selectedFilters(activity);
   };
 

@@ -22,9 +22,9 @@ angular.module('main')
     }
 
     this.addFilter = function (filter) {
-      Filter.addFilter($scope.activity, filter.name);
+      this.filters = Filter.addFilter($scope.activity, filter.name);
       $scope.filterModal.hide();
-      $state.go('filter', {filter: filter, activity: $scope.activity});
+      $state.go('filter', {filter: filter, activity: $scope.wholeActivity});
     };
 
     this.deleteFilter = function (filter) {

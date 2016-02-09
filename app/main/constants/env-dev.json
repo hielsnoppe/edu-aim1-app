@@ -12,7 +12,7 @@
             "Italian",
             "French",
             "Chinese",
-            "other"
+            "Other"
           ]
         },
         {
@@ -31,10 +31,10 @@
           "name": "Restaurant Type",
           "type": "string",
           "enum": [
-            "Italian",
-            "French",
-            "Chinese",
-            "other"
+            "Buffet",
+            "Traditional",
+            "StreetFood",
+            "Other"
           ]
         },
         {
@@ -64,7 +64,7 @@
             "Action",
             "Drama",
             "Comedy",
-            "other"
+            "Other"
           ]
         },
         {
@@ -83,10 +83,10 @@
           "name": "Movie Type",
           "type": "string",
           "enum": [
-            "Italian",
-            "French",
-            "Chinese",
-            "other"
+            "Slow",
+            "Fast",
+            "Random",
+            "Other"
           ]
         },
         {

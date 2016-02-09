@@ -18,7 +18,7 @@ angular.module('main')
               'Italian',
               'French',
               'Chinese',
-              'other'
+              'Other'
             ]
           },
           {
@@ -37,10 +37,10 @@ angular.module('main')
             'name': 'Restaurant Type',
             'type': 'string',
             'enum': [
-              'Italian',
-              'French',
-              'Chinese',
-              'other'
+              'Buffet',
+              'Traditional',
+              'StreetFood',
+              'Other'
             ]
           },
           {
@@ -70,7 +70,7 @@ angular.module('main')
               'Action',
               'Drama',
               'Comedy',
-              'other'
+              'Other'
             ]
           },
           {
@@ -89,10 +89,10 @@ angular.module('main')
             'name': 'Movie Type',
             'type': 'string',
             'enum': [
-              'Italian',
-              'French',
-              'Chinese',
-              'other'
+              'Slow',
+              'Fast',
+              'Random',
+              'Other'
             ]
           },
           {
