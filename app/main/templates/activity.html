@@ -7,27 +7,12 @@
                 Filters
             </ion-item>
             <!-- list of filters -->
-            <ion-list ng-repeat="filter in ctrl.activity.filtersSelected" show-delete="ctrl.shouldShowDelete">
+            <ion-list ng-repeat="filter in ctrl.filters" show-delete="ctrl.shouldShowDelete">
                 <!-- route to filter page -->
-                <ion-item class="item-icon-right" ui-sref="filter({ name: filter.name, activity: ctrl.name })">
-                    <ion-delete-button class="ion-minus-circled" ng-click="ctrl.deleteFilter(filter.name)"></ion-delete-button>
-
-                    <div ng-if="filter.class == '1For1'">
-                        {{ filter.name }}
-                    </div>
-                    <div ng-if="filter.class == '1ForAll'">
-                        {{ filter.name }}: {{filter.value}}
-                        <i class="icon ion-chevron-right"></i>
-                    </div>
-                    <div ng-if="filter.class == 'AllForAll'">
-                        {{ filter.name }}:
-                        <div ng-repeat="choice in filter.choices">
-                            <div ng-if="choice.value == true">
-                                {{choice.text}}
-                            </div>
-                        </div>
-                        <i class="icon ion-chevron-right"></i>
-                    </div>
+                <ion-item class="item-icon-right" ui-sref="filter({ filter: filter, activity: wholeActivity })">
+                  <ion-delete-button class="ion-minus-circled" ng-click="ctrl.deleteFilter(filter.name)"></ion-delete-button>
+                  {{ filter.name }}
+                  <i class="icon ion-chevron-right"></i>
                 </ion-item>
             </ion-list>
             <ion-item>
@@ -35,7 +20,7 @@
                     Add Filter
                 </button>
                 <button class="button button-block button-assertive" ng-click="ctrl.changeDeleteVisible()"
-                        ng-show="ctrl.activity.filtersSelected.length !== 0">
+                        ng-show="ctrl.filters.length !== 0">
                   Delete Filters
                 </button>
             </ion-item>

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('Filter', function ($log, Activity, lodash) {
+.service('Filter', function ($log, Activity, lodash, Root) {
 
   // =======
   // Private
@@ -14,7 +14,7 @@ angular.module('main')
   }
 
   function removeFilterFromObject (activity, object, filter) {
-    updateRoot(activity, lodash.remove(object, function(test) {
+    updateActivity(activity, lodash.remove(object, function(test) {
       return test.name == filter.name;
     }))
   }
@@ -23,7 +23,7 @@ angular.module('main')
     return lodash.differenceBy(Activity.getOriginalActivity(activity).properties, selectedFilters(activity), 'name');
   }
 
-  function updateRoot(activity, data) {
+  function updateActivity(activity, data) {
     var obtainedActivity = Activity.getActivity(activity);
     obtainedActivity.properties = data;
   }
@@ -36,7 +36,7 @@ angular.module('main')
   };
 
   this.getOriginalFilter = function (activity, filter) {
-    return findFilterByName(Root.dataSource, filter);
+    return findFilterByName(Activity.getOriginalActivity(activity), filter);
   };
 
   this.getSelectedFilters = function (activity) {
@@ -50,11 +50,12 @@ angular.module('main')
   this.updateFilter = function (activity, filter, data) {
     var index = lodash.findIndex(selectedFilters(activity), ['name', filter]);
     selectedFilters(activity)[index] = data;
-    updateRoot()
+    updateActivity(activity)
   };
 
   this.addFilter = function (activity, filter) {
     selectedFilters(activity).push(findFilterByName(availableFilters(activity), filter));
+    $log.log(Root.filledInfo);
     return selectedFilters(activity);
   };
 

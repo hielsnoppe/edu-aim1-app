@@ -24,12 +24,12 @@ angular.module('main')
     this.addFilter = function (filter) {
       Filter.addFilter($scope.activity, filter);
       $scope.filterModal.hide();
-      $state.go('filter', {filter: filter});
+      $state.go('filter', {filter: filter, activity: $scope.activity});
     };
 
     this.deleteFilter = function (filter) {
-      Filter.deleteFilter($scope.activity, filter);
-      if (this.activity.length === 0) {
+      this.filters = Filter.deleteFilter($scope.activity, filter);
+      if (this.filters.length === 0) {
         this.shouldShowDelete = false;
       }
     };
