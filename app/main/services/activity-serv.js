@@ -13,9 +13,10 @@ angular.module('main')
     }
 
     function removeActivityFromArray (array, activity) {
-      updateActivity(lodash.remove(array, function(test) {
+      lodash.remove(array, function(test) {
         return test.name == activity.name;
-      }))
+      });
+      updateActivity(array)
     }
 
     function availableActivities() {

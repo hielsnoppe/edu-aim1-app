@@ -58,6 +58,58 @@ angular.module('main')
             'type': 'boolean'
           }
         ]
+      },
+      {
+        'name': 'Movie',
+        'description': 'Go to a movie to watch something',
+        'properties': [
+          {
+            'name': 'Movie kind',
+            'type': 'string',
+            'enum': [
+              'Action',
+              'Drama',
+              'Comedy',
+              'other'
+            ]
+          },
+          {
+            'name': 'Movie Rating',
+            'type': 'integer',
+            'minimum': 0,
+            'maximum': 5
+          },
+          {
+            'name': 'Price Range',
+            'type': 'floatRange',
+            'minimum': 0,
+            'maximum': 100
+          },
+          {
+            'name': 'Movie Type',
+            'type': 'string',
+            'enum': [
+              'Italian',
+              'French',
+              'Chinese',
+              'other'
+            ]
+          },
+          {
+            'name': 'Wifi Available',
+            'type': 'boolean'
+          },
+          {
+            'name': 'Phone Number',
+            'type': 'interger',
+            'minimum': 0,
+            'maximum': 9999999999
+          },
+          {
+            'name': 'Accepts Reservations',
+            'type': 'boolean'
+          }
+        ]
       }
     ]
       /*endinject*/

@@ -22,6 +22,7 @@ angular.module('main')
 
     this.createActivity = function (activity) {
       this.activities = Activity.addActivity(activity.name);
+      $scope.availableActivities = Activity.getAvailableActivities();
       $scope.modal.hide();
       $state.go('activity', { activity: activity });
     };
@@ -43,7 +44,8 @@ angular.module('main')
     };
 
     this.removeActivity = function (activity) {
-      this.activities = Activity.deleteActivity(activity.name);
+      this.activities = Activity.deleteActivity(activity);
+      $scope.availableActivities = Activity.getAvailableActivities();
       if (this.activities.length === 0) {
         this.shouldShowDelete = false;
       }

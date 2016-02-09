@@ -30,7 +30,7 @@ angular.module('main')
     this.deleteFilter = function (filter) {
       this.filters = Filter.deleteFilter($scope.activity, filter);
       $scope.availableFilters = Filter.getAvailableFilters($scope.activity);
-      
+
       if (this.filters.length === 0) {
         this.shouldShowDelete = false;
       }
