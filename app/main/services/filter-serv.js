@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('Filter', function ($log, Activity, lodash, Root) {
+.service('Filter', function ($log, Activity, lodash) {
 
   // =======
   // Private
@@ -56,7 +56,6 @@ angular.module('main')
 
   this.addFilter = function (activity, filter) {
     selectedFilters(activity).push(findFilterByName(availableFilters(activity), filter));
-    $log.log(Root.filledInfo);
     return selectedFilters(activity);
   };
 
