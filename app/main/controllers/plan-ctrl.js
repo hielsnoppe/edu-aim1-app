@@ -34,12 +34,15 @@ angular.module('main')
     if ($stateParams.clearHistory) {
       $ionicHistory.clearHistory();
     }
-    this.startTime = new Date();
-    this.endTime = new Date();
-    this.startDate = new Date();
-    this.endDate = new Date();
-    this.startLocation = '';
-    this.endLocation = '';
+    this.generalData = {
+      startTime: new Date(),
+      endTime: new Date(),
+      startDate: new Date(),
+      endDate: new Date(),
+      startLocation: '',
+      endLocation: ''
+    };
+
     this.activities = Activity.getSelectedActivities();
     $scope.availableActivities = Activity.getAvailableActivities();
     this.shouldShowDelete = false;
@@ -88,6 +91,7 @@ angular.module('main')
     };
 
     this.uploadData = function () {
+      Root.setGeneralData(this.generalData);
       Root.uploadInfo();
       $state.go('result', {response: Root.filledInfo})
     };

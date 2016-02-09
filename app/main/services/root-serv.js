@@ -33,8 +33,8 @@ angular.module('main')
      * Set the general data to the filledData
      * @param generalData like start and end location and date
      */
-    this.setGeneralData = function () {
-
+    this.setGeneralData = function (generalData) {
+      this.filledInfo.generalData = generalData
     };
 
   });
