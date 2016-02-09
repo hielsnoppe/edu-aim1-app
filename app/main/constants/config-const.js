@@ -75,7 +75,7 @@ angular.module('main')
           },
           {
             'name': 'Movie Rating',
-            'type': 'integerRange',
+            'type': 'integer',
             'minimum': 0,
             'maximum': 5
           },

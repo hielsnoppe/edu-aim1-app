@@ -41,7 +41,10 @@ angular.module('main', [
       .state('result', {
         url: '/result',
         templateUrl: 'main/templates/result.html',
-        controller: 'ResultCtrl as ctrl'
+        controller: 'ResultCtrl as ctrl',
+        params: {
+          response: null
+        }
       });
 
   })

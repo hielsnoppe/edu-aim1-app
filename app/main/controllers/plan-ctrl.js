@@ -87,4 +87,9 @@ angular.module('main')
       this.shouldShowDelete = !this.shouldShowDelete;
     };
 
+    this.uploadData = function () {
+      Root.uploadInfo();
+      $state.go('result', {response: Root.filledInfo})
+    };
+
   });

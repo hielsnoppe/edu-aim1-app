@@ -10,7 +10,8 @@
 
         <!-- In case of string list choice -->
         <ion-list ng-switch-when="string" ng-repeat="choice in originalFilter.enum">
-          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+          <ion-checkbox ng-model="filter.value[$index]"
+                     ng-change="ctrl.updateFilter(filter.value)">{{choice}}</ion-checkbox>
         </ion-list>
 
         <!-- In case of integer -->
@@ -22,14 +23,9 @@
           {{ originalFilter.maximum.toString() }}
         </div>
 
-        <!-- In case of integer range -->
-        <ion-list ng-switch-when="integerRange" ng-repeat="choice in originalFilter.enum">
-          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
-        </ion-list>
-
         <!-- In case of boolean -->
         <ion-list ng-switch-when="boolean" ng-repeat="choice in originalFilter.enum">
-          <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+          <ion-radio ng-model="filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
         </ion-list>
 
       </div>

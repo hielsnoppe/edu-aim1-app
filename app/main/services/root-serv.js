@@ -26,21 +26,14 @@ angular.module('main')
      * uses $http service
      */
     this.uploadInfo = function () {
-
+      // TODO Upload the info into the HTTP service
     };
 
     /**
      * Set the general data to the filledData
      * @param generalData like start and end location and date
      */
-    this.setGeneralData = function (generalData) {
-
-    };
-
-    /**
-     * Gets the saved general data saved in the filledData
-     */
-    this.getGeneralData = function () {
+    this.setGeneralData = function () {
 
     };
 

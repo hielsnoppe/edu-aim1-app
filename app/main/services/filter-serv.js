@@ -63,6 +63,12 @@ angular.module('main')
       case "integer":
             newFilter.value = 0;
             break;
+      case "string":
+            newFilter.value = [];
+            break;
+      case "boolean":
+            newFilter.value = false;
+            break;
     }
     selectedFilters(activity).push(newFilter);
     return selectedFilters(activity);
