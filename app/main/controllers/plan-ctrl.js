@@ -1,7 +1,7 @@
 'use strict';
 angular.module('main')
   .controller('PlanCtrl', function ($ionicHistory, $ionicModal, $scope, $ionicPopup, Root,
-                                    Activity, $state, $stateParams, $rootScope) {
+                                    Activity, $state, $stateParams, $rootScope, $cordovaGeolocation) {
     // Huge fix for routing problems!!!
     // https://github.com/driftyco/ionic/issues/4124
     $rootScope.$on('$locationChangeSuccess', function () {
@@ -34,14 +34,20 @@ angular.module('main')
     if ($stateParams.clearHistory) {
       $ionicHistory.clearHistory();
     }
-    this.generalData = {
+
+    $scope.generalData = {
       startTime: new Date(),
       endTime: new Date(),
       startDate: new Date(),
       endDate: new Date(),
-      startLocation: '',
-      endLocation: ''
+      startLocation: {}
     };
+
+    $cordovaGeolocation.getCurrentPosition()
+      .then(function (data) {
+        $scope.generalData.startLocation.latitude = data.coords.latitude;
+        $scope.generalData.startLocation.longitude = data.coords.longitude;
+      });
 
     this.activities = Activity.getSelectedActivities();
     $scope.availableActivities = Activity.getAvailableActivities();
@@ -91,7 +97,7 @@ angular.module('main')
     };
 
     this.uploadData = function () {
-      Root.setGeneralData(this.generalData);
+      Root.setGeneralData($scope.generalData);
       Root.uploadInfo();
       $state.go('result', {response: Root.filledInfo})
     };

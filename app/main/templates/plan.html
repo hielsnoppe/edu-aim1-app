@@ -15,23 +15,26 @@
             <ion-item class="item-icon-left">
                 <i class="icon ion-calendar"></i>
                 <label class="item item-input">
-                    <input type="date" placeholder="Start Date" ng-model="ctrl.generalData.startDate">
+                    <input type="date" placeholder="Start Date" ng-model="generalData.startDate">
                 </label>
             </ion-item>
 
             <ion-item class="item-icon-left">
                 <i class="icon ion-clock"></i>
                 <label class="item item-input">
-                    <input type="time" placeholder="Start Time" ng-model="ctrl.generalData.startTime" formatted-time>
+                    <input type="time" placeholder="Start Time" ng-model="generalData.startTime" formatted-time>
                 </label>
             </ion-item>
 
             <!-- start location picker -->
             <ion-item class="item item-icon-left">
-                <i class="icon ion-map"></i>
-                <label class="item item-input">
-                    <input type="text" placeholder="Location" ng-model="ctrl.generalData.startLocation">
-                </label>
+              <i class="icon ion-map"></i>
+              <label class="item">
+                  Latitude: {{ generalData.startLocation.latitude }}
+              </label>
+              <label class="item">
+                Longitude: {{ generalData.startLocation.longitude }}
+              </label>
             </ion-item>
 
 
@@ -75,14 +78,14 @@
         <ion-item class="item-icon-left">
             <i class="icon ion-calendar"></i>
             <label class="item item-input">
-                <input type="date" placeholder="End Date" ng-model="ctrl.generalData.endDate">
+                <input type="date" placeholder="End Date" ng-model="generalData.endDate">
             </label>
         </ion-item>
 
         <ion-item class="item-icon-left">
             <i class="icon ion-clock"></i>
             <label class="item item-input">
-                <input type="time" placeholder="End Time" ng-model="ctrl.generalData.endTime" formatted-time>
+                <input type="time" placeholder="End Time" ng-model="generalData.endTime" formatted-time>
             </label>
         </ion-item>
 
