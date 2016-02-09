@@ -15,7 +15,10 @@ angular.module('main', [
       .state('plan', {
         url: '/plan',
         templateUrl: 'main/templates/plan.html',
-        controller: 'PlanCtrl as ctrl'
+        controller: 'PlanCtrl as ctrl',
+        params: {
+          clearHistory: false
+        }
       })
       .state('activity', {
         cache: false,
@@ -34,11 +37,6 @@ angular.module('main', [
           filter: null,
           activity: null
         }
-      })
-      .state('property', {
-        url: '/property',
-        templateUrl: 'main/templates/component.html',
-        controller: 'ComponentCtrl as ctrl'
       })
       .state('result', {
         url: '/result',

@@ -4,7 +4,7 @@ angular.module('main')
     this.shouldShowDelete = false;
     if (!$stateParams.activity) {
       // Return if we arrived here without a given activity
-      $state.go('plan');
+      $state.go('plan', {clearHistory: true});
     }
     else {
       $scope.wholeActivity = $stateParams.activity;

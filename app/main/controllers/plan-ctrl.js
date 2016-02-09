@@ -1,7 +1,39 @@
 'use strict';
 angular.module('main')
-  .controller('PlanCtrl', function ($ionicHistory, $ionicModal, $scope, $ionicPopup, Root, Activity, $state) {
-    $ionicHistory.clearHistory();
+  .controller('PlanCtrl', function ($ionicHistory, $ionicModal, $scope, $ionicPopup, Root,
+                                    Activity, $state, $stateParams, $rootScope) {
+    // Huge fix for routing problems!!!
+    // https://github.com/driftyco/ionic/issues/4124
+    $rootScope.$on('$locationChangeSuccess', function () {
+      if (! $ionicHistory.currentView()) { return }
+
+      //extracted from $ionicHistory
+      function getCurrentStateId() {
+        var id;
+        if ($state && $state.current && $state.current.name) {
+          id = $state.current.name;
+          if ($state.params) {
+            for (var key in $state.params) {
+              if ($state.params.hasOwnProperty(key) && $state.params[key]) {
+                id += "_" + key + "=" + $state.params[key];
+              }
+            }
+          }
+          return id;
+        }
+        // if something goes wrong make sure its got a unique stateId
+        return ionic.Utils.nextUid();
+      };
+
+      var currentView = $ionicHistory.currentView();
+      currentView.stateId = getCurrentStateId();
+      currentView.stateName = $state.current.name;
+      currentView.stateParams = angular.copy($state.params);
+    });
+
+    if ($stateParams.clearHistory) {
+      $ionicHistory.clearHistory();
+    }
     this.startTime = new Date();
     this.endTime = new Date();
     this.startDate = new Date();

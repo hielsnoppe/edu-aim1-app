@@ -14,17 +14,17 @@ angular.module('main')
   }
 
   function removeFilterFromObject (activity, object, filter) {
-    lodash.remove(object, function(test) {
-      return test.name == filter.name;
+    lodash.remove(object, function (test) {
+      return test.name === filter.name;
     });
-    updateActivity(activity,object);
+    updateActivity(activity, object);
   }
 
-  function availableFilters(activity) {
+  function availableFilters (activity) {
     return lodash.differenceBy(Activity.getOriginalActivity(activity).properties, selectedFilters(activity), 'name');
   }
 
-  function updateActivity(activity, data) {
+  function updateActivity (activity, data) {
     var obtainedActivity = Activity.getActivity(activity);
     obtainedActivity.properties = data;
   }
@@ -51,7 +51,7 @@ angular.module('main')
   this.updateFilter = function (activity, filter, data) {
     var index = lodash.findIndex(selectedFilters(activity), ['name', filter]);
     selectedFilters(activity)[index] = data;
-    updateActivity(activity)
+    updateActivity(activity);
   };
 
   this.addFilter = function (activity, filter) {
