@@ -5,7 +5,7 @@
     </ion-header-bar>
     <ion-content class="padding">
         <ion-list ng-repeat="filter in availableFilters">
-            <ion-item class="item-icon-right" ng-click="ctrl.addFilter(filter.name)">
+            <ion-item class="item-icon-right" ng-click="ctrl.addFilter(filter)">
                 {{ filter.name }}
                 <i class="icon ion-ios-plus-outline"></i>
             </ion-item>
