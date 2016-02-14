@@ -2,24 +2,154 @@
   <!-- do you want padding? -->
   <ion-content class="padding">
 
-    <!-- content goes here -->
-    <ion-list ng-repeat="resultItems in ctrl.activities">
+    <!-- Iterator over all activities in schedule -->
+    <ion-list ng-repeat="activity in ctrl.activities">
 
-      <ion-item class="item item-divider">
-        Transportation
+
+      <!-- Transport activity -->
+      <div class="item item-divider item-icon-right" ng-if="activity.type == 'TransportActivity'">
+          Transportation
+          <i class="icon ion-android-train"></i>
+      </div>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TransportActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            Start: {{activity.startTime}}
+          </label>
       </ion-item>
 
-      <ion-item class="item item-icon">
-
+      <ion-item class="item item-icon" ng-if="activity.type == 'TransportActivity'">
+        <i class="icon ion-map"></i>
+        <label class="item">
+            Start: {{activity.startLocation}}
+        </label>
       </ion-item>
 
-      <ion-item class="item item-icon">
-
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TransportActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            End: {{activity.endTime}}
+          </label>
       </ion-item>
 
-      <ion-item class="item item-icon">
-
+      <ion-item class="item item-icon" ng-if="activity.type == 'TransportActivity'">
+        <i class="icon ion-map"></i>
+        <label class="item">
+            End: {{activity.endLocation}}
+        </label>
       </ion-item>
+
+      <!-- Restaurant activity -->
+      <div class="item item-divider item-icon-right" ng-if="activity.type == 'RestaurantActivity'">
+          Restaurant
+          <i class="icon ion-android-restaurant"></i>
+      </div>
+
+      <ion-item class="item item-icon" ng-if="activity.type == 'RestaurantActivity'">
+        {{activity.name}}
+      </ion-item>
+
+      <ion-item class="item item-icon" ng-if="activity.type == 'RestaurantActivity'">
+        {{activity.cuisine}} cuisine
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'RestaurantActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            Start: {{activity.startTime}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'RestaurantActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            End: {{activity.endTime}}
+          </label>
+      </ion-item>
+
+      <!-- Cinema Activity-->
+      <div class="item item-divider item-icon-right" ng-if="activity.type == 'CinemaActivity'">
+          Cinema
+          <i class="icon ion-film-marker"></i>
+      </div>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'CinemaActivity'">
+          <i class="icon ion-ios-film"></i>
+          <label class="item">
+            {{activity.title}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'CinemaActivity'">
+          <i class="icon ion-ios-home"></i>
+          <label class="item">
+            {{activity.cinemaName}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'CinemaActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            Start: {{activity.startTime}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'CinemaActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            End: {{activity.endTime}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon" ng-if="activity.type == 'CinemaActivity'">
+        <i class="icon ion-map"></i>
+        <label class="item">
+            {{activity.location}}
+        </label>
+      </ion-item>
+
+      <!-- Theater activity -->
+      <div class="item item-divider item-icon-right" ng-if="activity.type == 'TheatreActivity'">
+          Theater
+          <i class="icon ion-ios-people"></i>
+      </div>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TheatreActivity'">
+          <i class="icon ion-play"></i>
+          <label class="item">
+            {{activity.title}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TheatreActivity'">
+          <i class="icon ion-ios-home"></i>
+          <label class="item">
+            {{activity.theatreName}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TheatreActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            Start: {{activity.startTime}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon-left" ng-if="activity.type == 'TheatreActivity'">
+          <i class="icon ion-clock"></i>
+          <label class="item">
+            End: {{activity.endTime}}
+          </label>
+      </ion-item>
+
+      <ion-item class="item item-icon" ng-if="activity.type == 'TheatreActivity'">
+        <i class="icon ion-map"></i>
+        <label class="item">
+            {{activity.location}}
+        </label>
+      </ion-item>
+
 
     </ion-list>
 
