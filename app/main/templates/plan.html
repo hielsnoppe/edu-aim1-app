@@ -15,23 +15,26 @@
             <ion-item class="item-icon-left">
                 <i class="icon ion-calendar"></i>
                 <label class="item item-input">
-                    <input type="date" placeholder="Start Date" ng-model="ctrl.startDate">
+                    <input type="date" placeholder="Start Date" ng-model="generalData.startDate">
                 </label>
             </ion-item>
 
             <ion-item class="item-icon-left">
                 <i class="icon ion-clock"></i>
                 <label class="item item-input">
-                    <input type="time" placeholder="Start Time" ng-model="ctrl.startTime">
+                    <input type="time" placeholder="Start Time" ng-model="generalData.startTime" formatted-time>
                 </label>
             </ion-item>
 
             <!-- start location picker -->
             <ion-item class="item item-icon-left">
-                <i class="icon ion-map"></i>
-                <label class="item item-input">
-                    <input type="text" placeholder="Location" ng-model="ctrl.startLocation">
-                </label>
+              <i class="icon ion-map"></i>
+              <label class="item">
+                  Latitude: {{ generalData.startLocation.latitude }}
+              </label>
+              <label class="item">
+                Longitude: {{ generalData.startLocation.longitude }}
+              </label>
             </ion-item>
 
 
@@ -46,7 +49,7 @@
                 <!-- list of activities -->
                 <ion-list ng-repeat="activity in ctrl.activities" show-delete ="ctrl.shouldShowDelete">
                     <!-- route to activity page -->
-                    <ion-item class="item-icon-right" ui-sref="activity({ name: activity.name })">
+                    <ion-item class="item-icon-right" ui-sref="activity({ activity: activity })">
                         <ion-delete-button class="ion-minus-circled" ng-click="ctrl.removeActivity(activity)" ></ion-delete-button>
                         {{ activity.name }}
                         <i class="icon ion-chevron-right"></i>
@@ -75,26 +78,20 @@
         <ion-item class="item-icon-left">
             <i class="icon ion-calendar"></i>
             <label class="item item-input">
-                <input type="date" placeholder="End Date" ng-model="ctrl.endDate">
+                <input type="date" placeholder="End Date" ng-model="generalData.endDate">
             </label>
         </ion-item>
 
         <ion-item class="item-icon-left">
             <i class="icon ion-clock"></i>
             <label class="item item-input">
-                <input type="time" placeholder="End Time" ng-model="ctrl.endTime">
-            </label>
-        </ion-item>
-
-        <!-- end location picker -->
-        <ion-item class="item item-icon-left">
-            <i class="icon ion-map"></i>
-            <label class="item item-input">
-                <input type="text" placeholder="Location" ng-model="ctrl.endLocation">
+                <input type="time" placeholder="End Time" ng-model="generalData.endTime" formatted-time>
             </label>
         </ion-item>
 
     </ion-list>
+
+    <button class="button button-block button-assertive" ng-click="ctrl.uploadData()">Send</button>
 
 </ion-content>
 

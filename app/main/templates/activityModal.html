@@ -4,7 +4,7 @@
     <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
   </ion-header-bar>
   <ion-content class="padding">
-    <ion-list ng-repeat="activity in ctrl.availableActivities">
+    <ion-list ng-repeat="activity in availableActivities">
       <ion-item class="item-icon-right" ng-click="ctrl.createActivity(activity, $index)">
         {{ activity.name }}
         <i class="icon ion-ios-plus-outline"></i>
