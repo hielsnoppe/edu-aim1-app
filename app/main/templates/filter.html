@@ -1,20 +1,34 @@
-<ion-view view-title="{{ ctrl.name }}">
-    <!-- do you want padding? -->
-    <ion-content class="padding">
-        <ion-list>
-            <ion-item class="item item-divider">
-                Preferences
-            </ion-item>
-            <div ng-if="ctrl.filter.class == '1ForAll'">
-                <ion-list ng-repeat="choice in ctrl.filter.choices">
-                    <ion-radio ng-model="ctrl.filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
-                </ion-list>
-            </div>
-            <div ng-if="ctrl.filter.class == 'AllForAll'">
-                <ion-list ng-repeat="choice in ctrl.filter.choices">
-                    <ion-checkbox ng-model="choice.value">{{choice.text}}</ion-checkbox>
-                </ion-list>
-            </div>
-        </ion-item>
-    </ion-content>
+<ion-view cache-view="false">
+  <ion-nav-title> {{ 'Filter ' + filter.name }}</ion-nav-title>
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item class="item item-divider">
+        {{ filter.name }}
+      </ion-item>
+      <div ng-switch="filter.type">
+
+        <!-- In case of string list choice -->
+        <ion-list ng-switch-when="string" ng-repeat="choice in originalFilter.enum">
+          <ion-checkbox ng-model="filter.value[$index]"
+                     ng-change="ctrl.updateFilter(filter.value)">{{choice}}</ion-checkbox>
+        </ion-list>
+
+        <!-- In case of integer -->
+        <div ng-switch-when="integer" class="item range range-positive">
+          {{ originalFilter.minimum.toString() }}
+          <input ng-model="filter.value" type="range" name="{{ filter.name }}" min="{{ originalFilter.minimum }}"
+                 max="{{ originalFilter.maximum }}" value="{{ (originalFilter.maximum - originalFilter.minimum)/2 }}"
+                 ng-change="ctrl.updateFilter(filter.value)">
+          {{ originalFilter.maximum.toString() }}
+        </div>
+
+        <!-- In case of boolean -->
+        <ion-list ng-switch-when="boolean" ng-repeat="choice in originalFilter.enum">
+          <ion-radio ng-model="filter.value" ng-value="'{{choice}}'">{{choice}}</ion-radio>
+        </ion-list>
+
+      </div>
+    </ion-list>
+  </ion-content>
 </ion-view>

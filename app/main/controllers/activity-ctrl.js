@@ -1,43 +1,43 @@
 'use strict';
 angular.module('main')
-  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Root) {
+  .controller('ActivityCtrl', function ($ionicModal, $scope, $ionicPopup, $log, $stateParams, Filter, $state) {
     this.shouldShowDelete = false;
-    this.name = $stateParams.name;
-    this.activity = Root.getActivity(this.name);
+    if (!$stateParams.activity) {
+      // Return if we arrived here without a given activity
+      $state.go('plan', {clearHistory: true});
+    }
+    else {
+      $scope.wholeActivity = $stateParams.activity;
+      $scope.activity = $scope.wholeActivity.name;
+      this.filters = Filter.getSelectedFilters($scope.activity);
+      $scope.availableFilters = Filter.getAvailableFilters($scope.activity);
+
+      $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.availableFilters = Filter.getAvailableFilters($scope.activity);
+        $scope.filterModal = modal;
+      });
+    }
 
     this.addFilter = function (filter) {
-        for (var i = 0; i < this.activity.filtersAvailable.length; i++) {
-            if (this.activity.filtersAvailable[i].name === filter) {
-                this.activity.filtersSelected.push(this.activity.filtersAvailable[i]);
-             this.activity.filtersAvailable.splice(i, 1);
-            }
-        }
-        $scope.filterModal.hide();
-        Root.updateActivity(this.name, this.activity);
+      this.filters = Filter.addFilter($scope.activity, filter.name);
+      $scope.filterModal.hide();
+      $state.go('filter', {filter: filter, activity: $scope.wholeActivity});
     };
 
     this.deleteFilter = function (filter) {
-        for (var i = 0; i < this.activity.filtersSelected.length; i++) {
-            if (this.activity.filtersSelected[i].name === filter) {
-                this.activity.filtersAvailable.push(this.activity.filtersSelected[i]);
-                this.activity.filtersSelected.splice(i, 1);
-            }
-        }
-        if (this.activity.filtersSelected.length === 0) {
-            this.shouldShowDelete = false;
-        }
-        Root.updateActivity(this.name, this.activity);
+      this.filters = Filter.deleteFilter($scope.activity, filter);
+      $scope.availableFilters = Filter.getAvailableFilters($scope.activity);
+
+      if (this.filters.length === 0) {
+        this.shouldShowDelete = false;
+      }
     };
 
-    $ionicModal.fromTemplateUrl('main/templates/filterModal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.filterModal = modal;
-    });
-
     this.openFilterModal = function () {
-      if (this.activity.filtersAvailable.length === 0) {
+      if ($scope.availableFilters.length === 0) {
         $ionicPopup.alert({
           title: 'No more filters to add',
           content: 'You already used all the filters.'
@@ -52,6 +52,6 @@ angular.module('main')
     };
 
     this.changeDeleteVisible = function () {
-        this.shouldShowDelete = !this.shouldShowDelete;
+      this.shouldShowDelete = !this.shouldShowDelete;
     };
   });
