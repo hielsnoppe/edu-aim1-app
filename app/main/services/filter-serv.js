@@ -60,13 +60,13 @@ angular.module('main')
     newFilter.name = originalFilter.name;
     newFilter.type = originalFilter.type;
     switch (originalFilter.type) {
-      case "integer":
+      case 'integer':
             newFilter.value = 0;
             break;
-      case "string":
+      case 'string':
             newFilter.value = [];
             break;
-      case "boolean":
+      case 'boolean':
             newFilter.value = false;
             break;
     }

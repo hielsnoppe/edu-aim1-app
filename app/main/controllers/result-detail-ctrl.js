@@ -1,9 +1,13 @@
 'use strict';
 angular.module('main')
-.controller('ResultDetailCtrl', function ($log,$stateParams, Root) {
+.controller('ResultDetailCtrl', function ($log, $stateParams, Root, $http, Config, $scope) {
 
-  this.activities = $stateParams.activities;
+  $scope.activities = [];
 
-  $log.log('Hello from your Controller: ResultDetailCtrl in module main:. This is your controller:', this);
+  // Post the information from the server
+  $http.post(Config.ENV.SERVER_URL, $stateParams.response)
+    .then(function (result) {
+      $scope.activities = result.response;
+    });
 
 });

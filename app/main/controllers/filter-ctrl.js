@@ -15,5 +15,5 @@ angular.module('main')
     $log.log(Root.filledInfo);
     $scope.filter.value = filterData;
     Filter.updateFilter($scope.activity.name, $scope.filter.name, $scope.filter);
-  }
+  };
 });

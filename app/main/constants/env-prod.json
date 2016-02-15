@@ -4,54 +4,72 @@
     {
       "name": "Restaurant",
       "description": "Go to a restaurant to eat something",
-      "properties": {
-        "cuisine": {
+      "properties": [
+        {
+          "name": "Restaurant Name",
+          "type": "string"
+        },
+        {
           "name": "Restaurant Cusine",
           "type": "string",
           "enum": [
             "Italian",
             "French",
             "Chinese",
-            "other"
+            "Other"
           ]
         },
-        "minimumRating": {
+        {
           "name": "Restaurant Rating",
           "type": "integer",
           "minimum": 0,
           "maximum": 5
         },
-        "priceRange": {
-          "name": "Price Range",
-          "type": "floatRange",
-          "minimum": 0,
-          "maximum": 100
+        {
+          "name": "Restaurant Address",
+          "type": "string"
         },
-        "restaurantType": {
+        {
           "name": "Restaurant Type",
           "type": "string",
           "enum": [
-            "Italian",
-            "French",
-            "Chinese",
-            "other"
+            "meal_takeaway",
+            "bar",
+            "restaurant",
+            "food",
+            "night_club",
+            "cafe"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Movie",
+      "description": "Go to a movie to watch something",
+      "properties": [
+        {
+          "name": "Movie Name",
+          "type": "string"
+        },
+        {
+          "name": "Genre",
+          "type": "string",
+          "enum": [
+            "Action",
+            "Drama",
+            "Comedy",
+            "Science Fiction",
+            "Horror",
+            "Other"
           ]
         },
-        "wifiAvailable": {
-          "name": "Wifi Available",
-          "type": "boolean"
-        },
-        "telephoneNumber": {
-          "name": "Phone Number",
-          "type": "interger",
+        {
+          "name": "Movie Rating",
+          "type": "integer",
           "minimum": 0,
-          "maximum": 9999999999
-        },
-        "reservationRequirement": {
-          "name": "Accepts Reservations",
-          "type": "boolean"
+          "maximum": 10
         }
-      }
+      ]
     }
   ]
 }

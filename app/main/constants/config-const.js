@@ -28,34 +28,16 @@ angular.module('main')
             'maximum': 5
           },
           {
-            'name': 'Price Range',
-            'type': 'integer',
-            'minimum': 0,
-            'maximum': 100
-          },
-          {
             'name': 'Restaurant Type',
             'type': 'string',
             'enum': [
-              'Buffet',
-              'Traditional',
-              'StreetFood',
-              'Other'
+              'meal_takeaway',
+              'bar',
+              'restaurant',
+              'food',
+              'night_club',
+              'cafe'
             ]
-          },
-          {
-            'name': 'Wifi Available',
-            'type': 'boolean'
-          },
-          {
-            'name': 'Phone Number',
-            'type': 'integer',
-            'minimum': 0,
-            'maximum': 9999999999
-          },
-          {
-            'name': 'Accepts Reservations',
-            'type': 'boolean'
           }
         ]
       },
@@ -64,12 +46,14 @@ angular.module('main')
         'description': 'Go to a movie to watch something',
         'properties': [
           {
-            'name': 'Movie kind',
+            'name': 'Genre',
             'type': 'string',
             'enum': [
               'Action',
               'Drama',
               'Comedy',
+              'Science Fiction',
+              'Horror',
               'Other'
             ]
           },
@@ -77,37 +61,7 @@ angular.module('main')
             'name': 'Movie Rating',
             'type': 'integer',
             'minimum': 0,
-            'maximum': 5
-          },
-          {
-            'name': 'Price Range',
-            'type': 'integer',
-            'minimum': 0,
-            'maximum': 100
-          },
-          {
-            'name': 'Movie Type',
-            'type': 'string',
-            'enum': [
-              'Slow',
-              'Fast',
-              'Random',
-              'Other'
-            ]
-          },
-          {
-            'name': 'Wifi Available',
-            'type': 'boolean'
-          },
-          {
-            'name': 'Phone Number',
-            'type': 'integer',
-            'minimum': 0,
-            'maximum': 9999999999
-          },
-          {
-            'name': 'Accepts Reservations',
-            'type': 'boolean'
+            'maximum': 10
           }
         ]
       }

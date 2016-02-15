@@ -22,19 +22,11 @@ angular.module('main')
     };
 
     /**
-     * uplad all the filled data to the server and get a response
-     * uses $http service
-     */
-    this.uploadInfo = function () {
-      // TODO Upload the info into the HTTP service
-    };
-
-    /**
      * Set the general data to the filledData
      * @param generalData like start and end location and date
      */
     this.setGeneralData = function (generalData) {
-      this.filledInfo.generalData = generalData
+      this.filledInfo.generalData = generalData;
     };
 
   });

@@ -45,6 +45,14 @@ angular.module('main', [
         params: {
           response: null
         }
+      })
+      .state('result-detail', {
+        url: '/result-detail',
+        templateUrl: 'main/templates/result-detail.html',
+        controller: 'ResultDetailCtrl as ctrl',
+        params: {
+          response: null
+        }
       });
 
   })
