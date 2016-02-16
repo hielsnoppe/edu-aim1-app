@@ -12,7 +12,7 @@ angular.module('main')
         'description': 'Go to a restaurant to eat something',
         'properties': [
           {
-            'name': 'Restaurant Cusine',
+            'name': 'Restaurant Cuisine',
             'type': 'string',
             'enum': [
               'Italian',
@@ -44,7 +44,7 @@ angular.module('main')
             ]
           },
           {
-            'name': 'Wifi Available',
+            'name': 'WiFi Available',
             'type': 'boolean'
           },
           {
@@ -96,7 +96,7 @@ angular.module('main')
             ]
           },
           {
-            'name': 'Wifi Available',
+            'name': 'WiFi Available',
             'type': 'boolean'
           },
           {

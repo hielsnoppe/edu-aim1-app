@@ -6,7 +6,7 @@
       "description": "Go to a restaurant to eat something",
       "properties": [
         {
-          "name": "Restaurant Cusine",
+          "name": "Restaurant Cuisine",
           "type": "string",
           "enum": [
             "Italian",
@@ -38,7 +38,7 @@
           ]
         },
         {
-          "name": "Wifi Available",
+          "name": "WiFi Available",
           "type": "boolean"
         },
         {
@@ -90,7 +90,7 @@
           ]
         },
         {
-          "name": "Wifi Available",
+          "name": "WiFi Available",
           "type": "boolean"
         },
         {
