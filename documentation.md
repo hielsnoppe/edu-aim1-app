@@ -36,3 +36,6 @@ Filter display the options of a filter depending of its type (`boolean`, `int` o
 - `filter-serv.js`: Updates the activity when the filter is updated.
 
 ### Result
+Display a the sresult schedule
+- `result-detail-ctrl.js`: Provides the result schedule activities to the template after retrieving from the root service.
+- `result-detail.html`: Displays the data given by the controller.
