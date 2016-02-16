@@ -99,7 +99,7 @@ angular.module('main')
     this.uploadData = function () {
       Root.setGeneralData($scope.generalData);
       Root.uploadInfo();
-      $state.go('result', {response: Root.filledInfo})
+      $state.go('result', {response: Root.filledInfo});
     };
 
   });

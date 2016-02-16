@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-  .directive('formattedTime', function ($filter) {
+  .directive('formattedTime', function () {
 
     return {
       require: '?ngModel',

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('ResultDetailCtrl', function ($log,$stateParams, Root) {
+.controller('ResultDetailCtrl', function ($log, $stateParams) {
 
   this.activities = $stateParams.activities;
 
